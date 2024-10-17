@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lingua Link - Início</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Estilo do Carrossel */
+        .carousel {
+            position: relative;
+            max-width: 800px; /* Ajuste conforme necessário */
+            margin: auto;
+            overflow: hidden;
+            border-radius: 8px; /* Bordas arredondadas */
+        }
+        .carousel-item {
+            display: none; /* Esconde todos os itens inicialmente */
+            padding: 20px;
+            color: white;
+            text-align: center;
+            position: relative;
+            background-size: cover; /* Faz a imagem cobrir todo o espaço */
+            background-position: center; /* Centraliza a imagem */
+            height: 300px; /* Altura do banner */
+        }
+        .carousel-item.active {
+            display: block; /* Exibe o item ativo */
+        }
+        .carousel-item h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .prev, .next {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        /* Estilo do botão de Login */
+        .login-button {
+            padding: 10px 15px; /* Espaçamento do botão */
+            background-color: #FFB400; /* Cor de fundo */
+            color: white; /* Cor do texto */
+            border: none; /* Sem borda */
+            border-radius: 5px; /* Bordas arredondadas */
+            cursor: pointer; /* Mão ao passar o mouse */
+            text-decoration: none; /* Remove sublinhado */
+            margin-left: 20px; /* Espaço entre o logo e o botão */
+        }
+        .login-button:hover {
+            background-color: #FF9E00; /* Cor de fundo ao passar o mouse */
+        }
+        /* Estilo do botão de Matrícula */
+        .matricule-se-button {
+            padding: 10px 20px; /* Espaçamento do botão */
+            background-color: #FFB400; /* Cor de fundo */
+            color: white; /* Cor do texto */
+            border: none; /* Sem borda */
+            border-radius: 5px; /* Bordas arredondadas */
+            cursor: pointer; /* Mão ao passar o mouse */
+            text-decoration: none; /* Remove sublinhado */
+            margin-left: 15px; /* Espaço à esquerda do botão */
+            display: inline-block; /* Para permitir margens laterais */
+        }
+        .matricule-se-button:hover {
+            background-color: #FF9E00; /* Cor de fundo ao passar o mouse */
+        }
+        .nav-container {
+            display: flex;
+            align-items: center; /* Alinha logo e botão verticalmente */
+        }
+        nav ul {
+            display: flex; /* Coloca os links na mesma linha */
+            list-style-type: none; /* Remove marcadores */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+        }
+        nav ul li {
+            margin: 0; /* Removido o espaço entre os itens do menu */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px;"/>
+                </div>
+            </div>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre Nós</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="contato.html">Contato</a></li> <!-- Agora Contato -->
+                <li><a href="login.html" class="login-button">Login</a></li> <!-- Botão Login no menu -->
+                <li><a href="matricula.html" class="matricule-se-button">Matricule-se</a></li> <!-- Botão de Matricula -->
+            </ul>
+        </nav>
+        <div class="header-banner">
+            <h1>Bem-vindo à Lingua Link</h1>
+            <p>O futuro começa aqui</p>
+            <a href="cursos.html" class="cta-button">Explore nossos cursos</a>
+        </div>
+    </header>
+
+    <!-- Carrossel de Banners -->
+    <section class="carousel">
+        <div class="carousel-item active" style="background-image: url('imagens/banner1.png');"> 
+        </div>
+        <div class="carousel-item" style="background-image: url('imagens/banner2.png');"> 
+        </div>
+        <div class="carousel-item" style="background-image: url('imagens/banner3.png');"> 
+        </div>
+        <div class="carousel-item" style="background-image: url('imagens/banner4.png');">
+        </div>
+        <div class="carousel-controls">
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="cursos" class="highlight-section">
+        <h2>Cursos em Destaque</h2>
+        <div class="course-list">
+            <div class="course-item">
+                <h3>Curso de Inglês</h3>
+                <p>Aprenda inglês em 6 meses com nossos métodos inovadores!</p>
+            </div>
+            <div class="course-item">
+                <h3>Curso de Francês</h3>
+                <p>Descubra a língua e cultura francesa de forma envolvente!</p>
+            </div>
+            <div class="course-item">
+                <h3>Curso de Espanhol</h3>
+                <p>Domine o espanhol e amplie suas oportunidades profissionais.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="promotion-section">
+        <h2>Promoções</h2>
+        <p>Desconto de 20% na matrícula até o final do mês! Não perca essa oportunidade.</p>
+        <p>Primeira aula grátis: Experimente nossos cursos agora!</p>
+    </section>
+
+    <footer>
+        <p>© 2024 Lingua Link - Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../js/script.js"></script>
+</body>
+</html>

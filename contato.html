@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contato - Lingua Link</title>
+    <!-- Link para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Link do CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #6f42c1; /* Cor de fundo do cabeçalho */
+            color: white;
+            padding: 20px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav .logo img {
+            height: 100px; /* Tamanho do logo */
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-header {
+            background-color: #e9ecef;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .contact-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-header p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+        }
+
+        .info-item {
+            text-align: center;
+            max-width: 200px; /* Largura máxima para cada item */
+        }
+
+        .info-item i {
+            font-size: 3rem;
+            color: #6f42c1;
+            margin-bottom: 10px;
+        }
+
+        .contact-form-section {
+            background-color: white;
+            padding: 40px 20px;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Espaço entre os campos */
+        }
+
+        .contact-form label {
+            font-weight: bold;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background-color: #6f42c1;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #5a3c99; /* Cor ao passar o mouse */
+        }
+
+        .social-media {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Espaço entre os ícones sociais */
+        }
+
+        .social-icon {
+            color: #6f42c1;
+            font-size: 2rem; /* Tamanho dos ícones */
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #5a3c99; /* Cor ao passar o mouse */
+        }
+
+        .map {
+            padding: 20px;
+        }
+
+        .map-embed {
+            width: 100%;
+            height: 450px; /* Altura do mapa */
+            overflow: hidden;
+            border-radius: 8px; /* Bordas arredondadas */
+        }
+
+        footer {
+            background-color: #6f42c1;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px;"/>
+            </div>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="sobre.html">Sobre Nós</a></li>
+                <li><a href="cursos.html">Cursos</a></li>
+                <li><a href="contato.html">Contato</a></li> <!-- Agora Contato -->
+                
+            </ul>
+            
+        </nav>
+    </header>
+
+    <section class="contact-header">
+        <h1>Entre em Contato</h1>
+        <p>Estamos aqui para te ajudar! Entre em contato para mais informações ou dúvidas.</p>
+    </section>
+
+    <section class="contact-info">
+        <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Endereço</h3>
+            <p>Rua Exemplo, 123, Centro - Cidade/Estado</p>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <h3>Telefone</h3>
+            <p>(11) 1234-5678</p>
+        </div>
+        <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <h3>Email</h3>
+            <p>contato@escoladeidiomas.com</p>
+        </div>
+    </section>
+
+    <section class="contact-form-section">
+        <h2>Envie-nos uma Mensagem</h2>
+        <form action="enviar_mensagem.php" method="POST" class="contact-form">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Seu email">
+
+            <label for="subject">Assunto</label>
+            <input type="text" id="subject" name="subject" required placeholder="Assunto da mensagem">
+
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Escreva sua mensagem"></textarea>
+
+            <button type="submit">Enviar Mensagem</button>
+        </form>
+    </section>
+
+    <section class="social-media">
+        <h2>Conecte-se Conosco</h2>
+        <div class="social-icons">
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+    </section>
+
+    <section class="map">
+        <h2>Localização</h2>
+        <div class="map-embed">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093747!2d144.9537353159044!3d-37.81627974201274!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xfb0b619798d0d19f!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1633840920711!5m2!1sen!2sau" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Lingua Link. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

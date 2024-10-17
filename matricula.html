@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matricula - Lingua Link</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .matricula-container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .matricula-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .form-row > div {
+            flex: 1;
+            margin-right: 10px;
+        }
+        .form-row > div:last-child {
+            margin-right: 0;
+        }
+        .matricula-container label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        .matricula-container input,
+        .matricula-container select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .matricula-container button {
+            width: 100%;
+            padding: 15px;
+            background-color: #FFB400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .matricula-container button:hover {
+            background-color: #FF9E00;
+        }
+        .check-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .check-container input {
+            margin-right: 5px;
+        }
+        .form-row-name {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px; /* Adicionando espaço entre linhas */
+        }
+        .form-row-name > div {
+            margin-right: 10px; /* Espaço entre os campos do nome */
+            flex: 1; /* Permite que os campos ocupem o espaço igual */
+        }
+        .form-row-name > div:last-child {
+            margin-right: 0; /* Remove margem do último campo */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px;"/>
+        </div>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="matricula-container">
+    <h2>Formulário de Matrícula</h2>
+    <form id="matricula-form">
+        <div class="form-row-name">
+            <div>
+                <label for="nome-completo">Nome Completo <span style="color: red;">*</span></label>
+                <input type="text" id="nome-completo" name="nome-completo" required>
+            </div>
+            <div class="check-container">
+                <input type="checkbox" id="nome-social" name="nome-social">
+                <label for="nome-social">Nome Social</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="data-nascimento">Data de Nascimento <span style="color: red;">*</span></label>
+                <input type="date" id="data-nascimento" name="data-nascimento" required>
+            </div>
+            <div>
+                <label for="telefone">Número de Telefone <span style="color: red;">*</span></label>
+                <input type="tel" id="telefone" name="telefone" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="rg">RG <span style="color: red;">*</span></label>
+                <input type="text" id="rg" name="rg" required>
+            </div>
+            <div>
+                <label for="cpf">CPF <span style="color: red;">*</span></label>
+                <input type="text" id="cpf" name="cpf" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="endereco">Endereço <span style="color: red;">*</span></label>
+                <input type="text" id="endereco" name="endereco" required>
+            </div>
+            <div>
+                <label for="bairro">Bairro <span style="color: red;">*</span></label>
+                <input type="text" id="bairro" name="bairro" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="estado">Estado <span style="color: red;">*</span></label>
+                <select id="estado" name="estado" required>
+                    <option value="">Selecione</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+            <div>
+                <label for="email">Email <span style="color: red;">*</span></label>
+                <input type="email" id="email" name="email" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="como-soube">Como soube da escola? <span style="color: red;">*</span></label>
+                <select id="como-soube" name="como-soube" required>
+                    <option value="">Selecione</option>
+                    <option value="amigo">Amigo</option>
+                    <option value="internet">Internet</option>
+                    <option value="redes-sociais">Redes Sociais</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+            <div>
+                <label for="responsavel">Nome do Responsável <span style="color: red;">*</span></label>
+                <input type="text" id="responsavel" name="responsavel" required>
+            </div>
+        </div>
+
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<footer>
+    <p>© 2024 Lingua Link - Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
