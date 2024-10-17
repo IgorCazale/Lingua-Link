@@ -53,8 +53,23 @@
             cursor: pointer;
             border-radius: 5px;
         }
-        /* Estilo do botão de Login */
-        .login-button {
+
+        /* Estilo dos Botões */
+        .nav-container {
+            display: flex;
+            align-items: center; /* Alinha logo e botões verticalmente */
+        }
+        nav ul {
+            display: flex; /* Coloca os links na mesma linha */
+            list-style-type: none; /* Remove marcadores */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+            align-items: center; /* Alinha verticalmente */
+        }
+        nav ul li {
+            margin: 0; /* Removido o espaço entre os itens do menu */
+        }
+        .login-button, .matricule-se-button {
             padding: 10px 15px; /* Espaçamento do botão */
             background-color: #FFB400; /* Cor de fundo */
             color: white; /* Cor do texto */
@@ -62,38 +77,10 @@
             border-radius: 5px; /* Bordas arredondadas */
             cursor: pointer; /* Mão ao passar o mouse */
             text-decoration: none; /* Remove sublinhado */
-            margin-left: 20px; /* Espaço entre o logo e o botão */
-        }
-        .login-button:hover {
-            background-color: #FF9E00; /* Cor de fundo ao passar o mouse */
-        }
-        /* Estilo do botão de Matrícula */
-        .matricule-se-button {
-            padding: 10px 20px; /* Espaçamento do botão */
-            background-color: #FFB400; /* Cor de fundo */
-            color: white; /* Cor do texto */
-            border: none; /* Sem borda */
-            border-radius: 5px; /* Bordas arredondadas */
-            cursor: pointer; /* Mão ao passar o mouse */
-            text-decoration: none; /* Remove sublinhado */
             margin-left: 15px; /* Espaço à esquerda do botão */
-            display: inline-block; /* Para permitir margens laterais */
         }
-        .matricule-se-button:hover {
+        .login-button:hover, .matricule-se-button:hover {
             background-color: #FF9E00; /* Cor de fundo ao passar o mouse */
-        }
-        .nav-container {
-            display: flex;
-            align-items: center; /* Alinha logo e botão verticalmente */
-        }
-        nav ul {
-            display: flex; /* Coloca os links na mesma linha */
-            list-style-type: none; /* Remove marcadores */
-            padding: 0; /* Remove padding */
-            margin: 0; /* Remove margin */
-        }
-        nav ul li {
-            margin: 0; /* Removido o espaço entre os itens do menu */
         }
     </style>
 </head>
@@ -103,7 +90,9 @@
         <nav>
             <div class="nav-container">
                 <div class="logo">
-                    <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px;"/>
+                    <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px; border-radius: 10px;">
+
+
                 </div>
             </div>
             <ul>
@@ -111,7 +100,9 @@
                 <li><a href="sobre.html">Sobre Nós</a></li>
                 <li><a href="cursos.html">Cursos</a></li>
                 <li><a href="contato.html">Contato</a></li> <!-- Agora Contato -->
-                <li><a href="login.html" class="login-button">Login</a></li> <!-- Botão Login no menu -->
+                <li>
+                    <a href="#" id="area-do-aluno" class="login-button">Área do Aluno</a> <!-- Botão Área do Aluno -->
+                </li>
                 <li><a href="matricula.html" class="matricule-se-button">Matricule-se</a></li> <!-- Botão de Matricula -->
             </ul>
         </nav>
@@ -167,5 +158,21 @@
     </footer>
 
     <script src="../js/script.js"></script>
+    <script>
+        // Função para verificar se o usuário está logado
+        function isLoggedIn() {
+            return localStorage.getItem('loggedIn') === 'true';
+        }
+
+        // Redirecionar o botão "Área do Aluno"
+        document.getElementById('area-do-aluno').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão do link
+            if (isLoggedIn()) {
+                window.location.href = 'area_do_aluno.html'; // Redireciona para a área do aluno
+            } else {
+                window.location.href = 'login.html'; // Redireciona para a página de login
+            }
+        });
+    </script>
 </body>
 </html>

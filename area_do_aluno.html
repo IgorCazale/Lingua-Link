@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área do Aluno - Lingua Link</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* Estilos adicionais */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            flex: 1 1 24%;
+            min-width: 250px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #8A05BE;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #5A01A1;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            background-color: #f4f4f4;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 20px;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #8A05BE;
+            text-align: center;
+            color: white;
+            line-height: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+        }
+
+        .info div {
+            flex: 1;
+            text-align: center;
+        }
+
+        .info div i {
+            font-size: 50px;
+            color: #8A05BE;
+            margin-bottom: 10px;
+        }
+
+        .chart {
+            width: 100%;
+            height: 300px;
+            margin-top: 20px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .logout-button {
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #8A05BE;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #5A01A1;
+        }
+
+        /* Media Queries para responsividade */
+        @media (max-width: 768px) {
+            .dashboard {
+                flex-direction: column;
+                align-items: center;
+            }
+            .card {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">
+            <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px; border-radius: 10px;">
+        </div>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="sobre.html">Sobre Nós</a></li>
+            <li><a href="cursos.html">Cursos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Bem-vindo à Área do Aluno</h2>
+
+    <a href="#" class="logout-button" id="logout-button">Logout</a>
+
+    <div class="info">
+        <div>
+            <i class="fas fa-graduation-cap"></i>
+            <h3>Cursos Matriculados</h3>
+            <p id="cursos-matriculados">3 Cursos</p>
+        </div>
+        <div>
+            <i class="fas fa-calendar-check"></i>
+            <h3>Aulas Agendadas</h3>
+            <p id="aulas-agendadas">2 Aulas</p>
+        </div>
+        <div>
+            <i class="fas fa-star"></i>
+            <h3>Nota Média</h3>
+            <p id="nota-media">8.7</p>
+        </div>
+        <div>
+            <i class="fas fa-users"></i>
+            <h3>Turma</h3>
+            <p id="turma">Grupo A</p>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="card">
+            <h3>Aulas do Dia</h3>
+            <ul id="aulas-do-dia">
+                <li>Inglês: 10:00 - 11:30</li>
+                <li>Espanhol: 13:00 - 14:30</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Notas</h3>
+            <ul id="notas">
+                <li>Prova Oral: 8.5</li>
+                <li>Prova Escrita: 9.0</li>
+                <li>Trabalhos: 7.0</li>
+                <li>Lições: 10.0</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>Avisos</h3>
+            <p id="avisos">Não se esqueça de trazer materiais para a aula de amanhã!</p>
+            <p id="avisos-adicional">Último dia para entregar a lição de casa: sexta-feira.</p>
+        </div>
+        <div class="card">
+            <h3>Progresso do Curso</h3>
+            <p id="progresso-curso">Você completou 75% do curso de Inglês.</p>
+            <div class="progress">
+                <div class="progress-bar" id="progresso-barra" style="width: 75%;">75%</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart">
+        <h3>Desempenho Acadêmico</h3>
+        <canvas id="performanceChart" width="400" height="200"></canvas>
+    </div>
+    
+</div>
+
+<footer>
+    <p>&copy; 2024 Lingua Link. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    // Carrega os dados do usuário
+    function loadUserData(user) {
+        const userData = JSON.parse(user);
+        document.getElementById('cursos-matriculados').textContent = `${userData.cursosMatriculados} Cursos`;
+        document.getElementById('aulas-agendadas').textContent = `${userData.aulasAgendadas} Aulas`;
+        document.getElementById('nota-media').textContent = userData.notaMedia;
+        document.getElementById('turma').textContent = userData.turma;
+
+        // Aulas do Dia
+        const aulasDoDia = userData.aulasDoDia.map(aula => `<li>${aula.disciplina}: ${aula.horario}</li>`).join('');
+        document.getElementById('aulas-do-dia').innerHTML = aulasDoDia;
+
+        // Notas
+        const notas = userData.notas.map(nota => `<li>${nota.tipo}: ${nota.nota}</li>`).join('');
+        document.getElementById('notas').innerHTML = notas;
+
+        // Avisos
+        const avisos = userData.avisos.join('<br/>');
+        document.getElementById('avisos').innerHTML = avisos;
+        
+        // Progresso do Curso
+        document.getElementById('progresso-curso').textContent = `Você completou ${userData.progressoCurso}% do curso de ${userData.curso}`;
+        document.getElementById('progresso-barra').style.width = `${userData.progressoCurso}%`;
+        document.getElementById('progresso-barra').textContent = `${userData.progressoCurso}%`;
+    }
+
+    // Verifica se o usuário está autenticado
+    function checkAuth() {
+        const user = localStorage.getItem('user'); // Verifica se há um usuário no localStorage
+        if (!user) {
+            // Se não houver, redireciona para a página de login
+            window.location.href = 'login.html';
+        } else {
+            loadUserData(user); // Carrega os dados do usuário
+        }
+    }
+
+    document.getElementById('logout-button').addEventListener('click', function(event) {
+        event.preventDefault(); // Evita que o link seja seguido
+        localStorage.removeItem('user'); // Limpa a sessão do usuário
+        window.location.href = 'login.html'; // Redireciona para a página de login
+    });
+
+    checkAuth(); // Chama a função de verificação ao carregar a página
+</script>
+
+<script>
+    // Configura o gráfico usando a biblioteca Chart.js
+    const ctx = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx, {
+        type: 'bar', // Tipo do gráfico (barra)
+        data: {
+            labels: ['Prova Oral', 'Prova Escrita', 'Trabalhos', 'Lições'], // Rótulos do gráfico
+            datasets: [{
+                label: 'Notas', // Nome da série de dados
+                data: [8.5, 9.0, 7.0, 10.0], // Valores das notas (substitua pelos dados reais)
+                backgroundColor: 'rgba(138, 5, 190, 0.5)', // Cor das barras
+                borderColor: 'rgba(138, 5, 190, 1)', // Cor da borda das barras
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true // Começa o eixo Y em 0
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

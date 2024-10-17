@@ -6,62 +6,111 @@
     <title>Login - Lingua Link</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-
     <style>
+        /* Estilos para a página de login */
         body {
             font-family: 'Roboto', sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        .login-container {
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #8A05BE; /* Cor de fundo do header */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white; /* Cor do texto do menu */
+        }
+
+        .login-container {
+            max-width: 400px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 50px auto; /* Centraliza o container horizontalmente e adiciona espaço em cima */
+            width: 90%;
+        }
+
         .login-container h2 {
             text-align: center;
-            margin-bottom: 20px;
+            color: #8A05BE; /* Cor do título */
         }
-        .login-container label {
-            display: block;
-            margin-bottom: 8px;
-        }
+
         .login-container input {
             width: 100%;
             padding: 10px;
-            margin-bottom: 15px;
+            margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         .login-container button {
             width: 100%;
             padding: 10px;
-            background-color: #FFB400;
+            background-color: #8A05BE; /* Cor do botão */
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
+
         .login-container button:hover {
-            background-color: #FF9E00;
+            background-color: #5A01A1; /* Cor do botão ao passar o mouse */
         }
-        footer {
+
+        .footer {
+            margin-top: 15px;
             text-align: center;
-            margin-top: 20px;
+            color: #8A05BE; /* Cor do texto do footer */
         }
+
+        .footer a {
+            text-decoration: none;
+            color: #8A05BE; /* Cor do link no footer */
+        }
+        
+        .error-message {
+            color: red; /* Define a cor do texto como vermelho */
+        }
+
     </style>
 </head>
 <body>
 
 <header>
+    <div class="logo">
+        <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px; border-radius: 10px;">
+    </div>
     <nav>
-        <div class="logo">
-            <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px;"/>
-        </div>
         <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="sobre.html">Sobre Nós</a></li>
@@ -74,37 +123,45 @@
 
 <div class="login-container">
     <h2>Login</h2>
-    <form id="login-form" onsubmit="handleLogin(event)">
-        <label for="username">Usuário:</label>
-        <input type="text" id="username" name="username" required>
-
-        <label for="password">Senha:</label>
-        <input type="password" id="password" name="password" required>
-
+    <form id="login-form">
+        <input type="text" id="username" placeholder="Usuário" required>
+        <input type="password" id="password" placeholder="Senha" required>
         <button type="submit">Entrar</button>
     </form>
-    <div id="response-message"></div>
+    <div class="footer">
+        <a href="#" id="forgot-password">Esqueceu sua senha?</a>
+        <p id="message"></p>
+    </div>
 </div>
 
 <script>
-   async function handleLogin(event) {
-    event.preventDefault();
+    // Lógica de login
+    document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
 
-    const response = await fetch('users.json');
-    const users = await response.json();
+        fetch('users.json')
+            .then(response => response.json())
+            .then(users => {
+                const user = users.find(user => user.username === username && user.password === password);
+                const messageElement = document.getElementById('message');
 
-    const user = users.find(u => u.username === username && u.password === password);
-    if (user) {
-        console.log('Login bem-sucedido!');
-        // Redirecionar ou mostrar mensagem de sucesso
-    } else {
-        console.log('Credenciais inválidas');
-    }
-}
+                if (user) {
+                    localStorage.setItem('user', JSON.stringify(user)); // Armazena os dados do usuário no localStorage
+                    window.location.href = 'area_do_aluno.html'; // Redireciona para a área do aluno
+                } else {
+                    messageElement.textContent = 'Usuário ou senha incorretos.';
+                    messageElement.className = 'error-message'; // Adiciona a classe de erro para mudar a cor
+                }
+            });
+    });
 
+    document.getElementById('forgot-password').addEventListener('click', function(event) {
+        event.preventDefault();
+        alert('Recuperação de senha em breve!'); // Placeholder
+    });
 </script>
 
 </body>

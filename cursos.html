@@ -5,20 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cursos - Lingua Link</title>
     <link rel="stylesheet" href="css/style.css">
- <!-- Atualizei o caminho para style.css -->
+
+    <style>
+        /* Estilos para a página de cursos */
+        .courses-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Distribui os itens de forma uniforme */
+            gap: 20px; /* Espaçamento entre os quadrados */
+        }
+
+        .course-item {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%; /* Aumenta a largura dos quadrados */
+            min-height: 350px; /* Aumenta a altura dos quadrados */
+            display: flex;
+            flex-direction: column; /* Para organizar o conteúdo em coluna */
+            justify-content: space-between; /* Para distribuir o conteúdo e o botão */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+        }
+
+        .cta-button {
+            background-color: #FFB400;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: auto; /* Empurra o botão para o final */
+            display: block;
+            text-align: center; /* Centraliza o botão */
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #FF9E00;
+        }
+
+        /* Estilo para o botão "Saiba mais" */
+        .saiba-mais {
+            background-color: transparent;
+            color: #FFB400;
+            border: 2px solid #FFB400;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+        }
+
+        .saiba-mais:hover {
+            background-color: #FFB400;
+            color: white;
+        }
+    </style>
+
 </head>
 <body>
 
 <header>
     <nav>
         <div class="logo">
-            <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px;"/>
+            <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px; border-radius: 10px;">
         </div>
         <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="sobre.html">Sobre Nós</a></li>
             <li><a href="cursos.html">Cursos</a></li>
-            <li><a href="contato.html">Contato</a></li> <!-- Agora Contato -->
+            <li><a href="contato.html">Contato</a></li>
         </ul>
     </nav>
 </header>
@@ -26,7 +86,7 @@
 <div class="header-banner">
     <h1>Nossos Cursos</h1>
     <p>Descubra a variedade de cursos que oferecemos para você!</p>
-    <a href="#" class="cta-button">Saiba mais</a>
+    <a href="#" class="cta-button saiba-mais">Saiba mais</a>
 </div>
 
 <div class="courses-section">
@@ -37,42 +97,42 @@
             <p><strong>Duração:</strong> 6 meses</p>
             <p><strong>Nível:</strong> Iniciante a Avançado</p>
             <p>Aprenda inglês de forma prática e divertida com nossos professores nativos. Aulas dinâmicas e interativas.</p>
-            <a href="matricula.html" class="cta-button">Inscreva-se</a> <!-- Alterado -->
+            <a href="matricula.html" class="cta-button">Inscreva-se</a>
         </div>
         <div class="course-item">
             <h3>Curso de Espanhol</h3>
             <p><strong>Duração:</strong> 6 meses</p>
             <p><strong>Nível:</strong> Iniciante a Avançado</p>
             <p>Domine o espanhol com nossos professores experientes. Aprenda a se comunicar em situações do dia a dia.</p>
-            <a href="matricula.html" class="cta-button">Inscreva-se</a> <!-- Alterado -->
+            <a href="matricula.html" class="cta-button">Inscreva-se</a>
         </div>
         <div class="course-item">
             <h3>Curso de Francês</h3>
             <p><strong>Duração:</strong> 4 meses</p>
             <p><strong>Nível:</strong> Iniciante</p>
             <p>Introduza-se ao idioma francês com aulas envolventes. Desenvolva habilidades de fala e compreensão.</p>
-            <a href="matricula.html" class="cta-button">Inscreva-se</a> <!-- Alterado -->
+            <a href="matricula.html" class="cta-button">Inscreva-se</a>
         </div>
         <div class="course-item">
             <h3>Curso de Alemão</h3>
             <p><strong>Duração:</strong> 5 meses</p>
             <p><strong>Nível:</strong> Iniciante a Intermediário</p>
             <p>Aprenda o idioma alemão com foco em gramática e conversação. Aulas adaptadas ao seu ritmo.</p>
-            <a href="matricula.html" class="cta-button">Inscreva-se</a> <!-- Alterado -->
+            <a href="matricula.html" class="cta-button">Inscreva-se</a>
         </div>
         <div class="course-item">
             <h3>Curso de Italiano</h3>
             <p><strong>Duração:</strong> 5 meses</p>
             <p><strong>Nível:</strong> Iniciante a Intermediário</p>
             <p>Descubra a língua italiana com aulas imersivas, explorando a cultura e a culinária da Itália.</p>
-            <a href="matricula.html" class="cta-button">Inscreva-se</a> <!-- Alterado -->
+            <a href="matricula.html" class="cta-button">Inscreva-se</a>
         </div>
         <div class="course-item">
             <h3>Curso de Mandarim</h3>
             <p><strong>Duração:</strong> 6 meses</p>
             <p><strong>Nível:</strong> Iniciante</p>
             <p>Aprenda a língua chinesa com uma abordagem única e interativa. Ideal para iniciantes.</p>
-            <a href="matricula.html" class="cta-button">Inscreva-se</a> <!-- Alterado -->
+            <a href="matricula.html" class="cta-button">Inscreva-se</a>
         </div>
     </div>
 </div>

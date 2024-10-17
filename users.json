@@ -1,11 +1,48 @@
 [
-    {
-      "username": "usuario1",
-      "password": "senha1"
-    },
-    {
-      "username": "usuario2",
-      "password": "senha2"
-    }
-  ]
-  
+  {
+      "username": "juninhogameplay@gmail.com",
+      "password": "gameplay123",
+      "cursosMatriculados": 3,
+      "aulasAgendadas": 2,
+      "notaMedia": 8.7,
+      "turma": "Grupo A",
+      "aulasDoDia": [
+          {"disciplina": "Inglês", "horario": "10:00 - 11:30"},
+          {"disciplina": "Espanhol", "horario": "13:00 - 14:30"}
+      ],
+      "notas": [
+          {"tipo": "Prova Oral", "nota": 8.5},
+          {"tipo": "Prova Escrita", "nota": 9.0},
+          {"tipo": "Trabalhos", "nota": 7.0},
+          {"tipo": "Lições", "nota": 10.0}
+      ],
+      "avisos": [
+          "Não se esqueça de trazer materiais para a aula de amanhã!",
+          "Último dia para entregar a lição de casa: sexta-feira."
+      ],
+      "progressoCurso": 75
+  },
+  {
+      "username": "claudinha@gmail.com",
+      "password": "claudinha123",
+      "cursosMatriculados": 2,
+      "aulasAgendadas": 3,
+      "notaMedia": 9.2,
+      "turma": "Grupo B",
+      "aulasDoDia": [
+          {"disciplina": "Francês", "horario": "09:00 - 10:30"},
+          {"disciplina": "Alemão", "horario": "11:00 - 12:30"}
+      ],
+      "notas": [
+          {"tipo": "Prova Oral", "nota": 9.5},
+          {"tipo": "Prova Escrita", "nota": 8.0},
+          {"tipo": "Trabalhos", "nota": 9.0},
+          {"tipo": "Lições", "nota": 8.5}
+      ],
+      "avisos": [
+          "Aula de revisão na próxima terça.",
+          "Material de leitura disponível online."
+      ],
+      "progressoCurso": 80
+  }
+]
