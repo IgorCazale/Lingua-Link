@@ -59,4 +59,5 @@ const server = http.createServer((req, res) => {
 const PORT = 8080; // Você pode mudar a porta se desejar
 server.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
+    console.log('Servidor rodando e operante ')
 });

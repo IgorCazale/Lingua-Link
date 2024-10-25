@@ -74,14 +74,14 @@
         .form-row-name {
             display: flex;
             align-items: center;
-            margin-bottom: 15px; /* Adicionando espaço entre linhas */
+            margin-bottom: 15px;
         }
         .form-row-name > div {
-            margin-right: 10px; /* Espaço entre os campos do nome */
-            flex: 1; /* Permite que os campos ocupem o espaço igual */
+            margin-right: 10px;
+            flex: 1;
         }
         .form-row-name > div:last-child {
-            margin-right: 0; /* Remove margem do último campo */
+            margin-right: 0;
         }
     </style>
 </head>
@@ -91,8 +91,6 @@
     <nav>
         <div class="logo">
             <img src="imagens/logo.png" alt="Lingua Link Logo" style="height: 150px; border-radius: 10px;">
-
-
         </div>
         <ul>
             <li><a href="index.html">Início</a></li>
@@ -208,13 +206,52 @@
             </div>
         </div>
 
+        <!-- Novo campo de seleção para o curso -->
+        <div class="form-row">
+            <div>
+                <label for="curso">Curso Desejado <span style="color: red;">*</span></label>
+                <select id="curso" name="curso" required>
+                    <option value="">Selecione um curso</option>
+                    <option value="ingles">Inglês</option>
+                    <option value="espanhol">Espanhol</option>
+                    <option value="frances">Francês</option>
+                    <option value="alemao">Alemão</option>
+                    <option value="italiano">Italiano</option>
+                </select>
+            </div>
+        </div>
+
         <button type="submit">Enviar</button>
     </form>
+    <p id="mensagem-sucesso" style="color: green; display: none;">Matrícula realizada com sucesso!</p>
 </div>
 
-<footer>
-    <p>© 2024 Lingua Link - Todos os direitos reservados.</p>
-</footer>
+<script>
+    document.getElementById('matricula-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Previne o envio padrão do formulário
+
+        // Validação dos campos obrigatórios
+        let camposValidos = true;
+        const campos = document.querySelectorAll('input[required], select[required]');
+        
+        campos.forEach(function(campo) {
+            if (!campo.value) {
+                campo.style.border = '1px solid red'; // Destaca os campos obrigatórios não preenchidos
+                camposValidos = false;
+            } else {
+                campo.style.border = ''; // Limpa o estilo se o campo estiver preenchido
+            }
+        });
+
+        if (camposValidos) {
+            document.getElementById('mensagem-sucesso').style.display = 'block';
+            document.getElementById('matricula-form').reset(); // Limpa o formulário após o envio
+            setTimeout(function() {
+                document.getElementById('mensagem-sucesso').style.display = 'none';
+            }, 3000); // Esconde a mensagem após 3 segundos
+        }
+    });
+</script>
 
 </body>
 </html>
