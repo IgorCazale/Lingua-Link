@@ -1,7 +1,32 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const express = require('express');
+const app = express();
+const PORT = 8080; // Porta do servidor
 
+// Middleware para processar dados de formulários
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Middleware para permitir CORS
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Permite todas as origens
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'); // Métodos permitidos
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type'); // Cabeçalhos permitidos
+    next();
+});
+
+// Servir arquivos estáticos da pasta 'html'
+app.use(express.static(path.join(__dirname, 'html')));
+
+// Rota de matrícula para exibir a mensagem de sucesso
+app.post('/matricula', (req, res) => {
+    console.log('Dados da matrícula recebidos:', req.body); // Exibe os dados no console
+    res.json('Matrícula realizada com sucesso!' );
+});
+
+// Função para lidar com requisições HTTP e arquivos estáticos
 const server = http.createServer((req, res) => {
     let filePath = path.join(__dirname, req.url === '/' ? 'html/index.html' : req.url);
     const extname = path.extname(filePath);
@@ -56,8 +81,9 @@ const server = http.createServer((req, res) => {
     });
 });
 
-const PORT = 8080; // Você pode mudar a porta se desejar
+// Inicializar o servidor HTTP e o Express
 server.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}`);
-    console.log('Servidor rodando e operante ')
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+app.listen(3000, () => console.log('Servidor Express rodando na porta 3000 para matrículas'));

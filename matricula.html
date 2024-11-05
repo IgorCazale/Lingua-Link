@@ -217,6 +217,7 @@
                     <option value="frances">Francês</option>
                     <option value="alemao">Alemão</option>
                     <option value="italiano">Italiano</option>
+                    <option value="italiano">Mandarim</option>
                 </select>
             </div>
         </div>
@@ -244,14 +245,44 @@
         });
 
         if (camposValidos) {
-            document.getElementById('mensagem-sucesso').style.display = 'block';
-            document.getElementById('matricula-form').reset(); // Limpa o formulário após o envio
-            setTimeout(function() {
-                document.getElementById('mensagem-sucesso').style.display = 'none';
-            }, 3000); // Esconde a mensagem após 3 segundos
+            // Coletar dados do formulário
+            const formData = new FormData(document.getElementById('matricula-form'));
+
+            // Converter FormData em um objeto
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key.replace(/-/g, '')] = value; // Remove os traços do nome da propriedade
+            });
+
+            // Enviar dados para o servidor
+            fetch('http://localhost:3000/matricula', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao realizar matrícula.');
+                }
+                return response.text();
+            })
+            .then(message => {
+                document.getElementById('mensagem-sucesso').innerText = message;
+                document.getElementById('mensagem-sucesso').style.display = 'block';
+                document.getElementById('matricula-form').reset(); // Limpa o formulário após o envio
+                setTimeout(function() {
+                    document.getElementById('mensagem-sucesso').style.display = 'none';
+                }, 3000); // Esconde a mensagem após 3 segundos
+            })
+            .catch(error => {
+                alert(error.message);
+            });
         }
     });
 </script>
+
 
 </body>
 </html>
