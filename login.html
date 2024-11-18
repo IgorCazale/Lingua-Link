@@ -97,9 +97,11 @@
             text-decoration: none;
             color: #8A05BE; /* Cor do link no footer */
         }
-        
+
         .error-message {
             color: red; /* Define a cor do texto como vermelho */
+            font-weight: bold;
+            margin-top: 10px;
         }
 
     </style>
@@ -130,7 +132,7 @@
     </form>
     <div class="footer">
         <a href="#" id="forgot-password">Esqueceu sua senha?</a>
-        <p id="message"></p>
+        <p id="message" aria-live="polite"></p> <!-- A mensagem de erro será anunciada pelo leitor de tela -->
     </div>
 </div>
 
@@ -155,6 +157,10 @@
                     messageElement.textContent = 'Usuário ou senha incorretos.';
                     messageElement.className = 'error-message'; // Adiciona a classe de erro para mudar a cor
                 }
+            })
+            .catch(error => {
+                console.error('Erro ao carregar os usuários:', error);
+                alert('Erro ao tentar fazer login. Tente novamente mais tarde.');
             });
     });
 

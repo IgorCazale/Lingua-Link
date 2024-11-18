@@ -126,17 +126,6 @@
         .logout-button:hover {
             background-color: #5A01A1;
         }
-
-        /* Media Queries para responsividade */
-        @media (max-width: 768px) {
-            .dashboard {
-                flex-direction: column;
-                align-items: center;
-            }
-            .card {
-                width: 90%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -227,75 +216,110 @@
 </footer>
 
 <script>
-    // Carrega os dados do usuário
-    function loadUserData(user) {
-        const userData = JSON.parse(user);
-        document.getElementById('cursos-matriculados').textContent = `${userData.cursosMatriculados} Cursos`;
-        document.getElementById('aulas-agendadas').textContent = `${userData.aulasAgendadas} Aulas`;
-        document.getElementById('nota-media').textContent = userData.notaMedia;
-        document.getElementById('turma').textContent = userData.turma;
-
-        // Aulas do Dia
-        const aulasDoDia = userData.aulasDoDia.map(aula => `<li>${aula.disciplina}: ${aula.horario}</li>`).join('');
-        document.getElementById('aulas-do-dia').innerHTML = aulasDoDia;
-
-        // Notas
-        const notas = userData.notas.map(nota => `<li>${nota.tipo}: ${nota.nota}</li>`).join('');
-        document.getElementById('notas').innerHTML = notas;
-
-        // Avisos
-        const avisos = userData.avisos.join('<br/>');
-        document.getElementById('avisos').innerHTML = avisos;
-        
-        // Progresso do Curso
-        document.getElementById('progresso-curso').textContent = `Você completou ${userData.progressoCurso}% do curso de ${userData.curso}`;
-        document.getElementById('progresso-barra').style.width = `${userData.progressoCurso}%`;
-        document.getElementById('progresso-barra').textContent = `${userData.progressoCurso}%`;
-    }
-
-    // Verifica se o usuário está autenticado
-    function checkAuth() {
-        const user = localStorage.getItem('user'); // Verifica se há um usuário no localStorage
-        if (!user) {
-            // Se não houver, redireciona para a página de login
-            window.location.href = 'login.html';
-        } else {
-            loadUserData(user); // Carrega os dados do usuário
-        }
-    }
-
-    document.getElementById('logout-button').addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que o link seja seguido
-        localStorage.removeItem('user'); // Limpa a sessão do usuário
-        window.location.href = 'login.html'; // Redireciona para a página de login
-    });
-
-    checkAuth(); // Chama a função de verificação ao carregar a página
-</script>
-
-<script>
-    // Configura o gráfico usando a biblioteca Chart.js
-    const ctx = document.getElementById('performanceChart').getContext('2d');
-    const performanceChart = new Chart(ctx, {
-        type: 'bar', // Tipo do gráfico (barra)
-        data: {
-            labels: ['Prova Oral', 'Prova Escrita', 'Trabalhos', 'Lições'], // Rótulos do gráfico
-            datasets: [{
-                label: 'Notas', // Nome da série de dados
-                data: [8.5, 9.0, 7.0, 10.0], // Valores das notas (substitua pelos dados reais)
-                backgroundColor: 'rgba(138, 5, 190, 0.5)', // Cor das barras
-                borderColor: 'rgba(138, 5, 190, 1)', // Cor da borda das barras
-                borderWidth: 1
-            }]
+    // Dados simulados dos alunos
+    const alunos = [
+        {
+            username: 'aluno1',
+            cursosMatriculados: 3,
+            aulasAgendadas: 2,
+            notaMedia: 8.7,
+            turma: 'Grupo A',
+            aulasDoDia: [
+                { disciplina: 'Inglês', horario: '10:00 - 11:30' },
+                { disciplina: 'Espanhol', horario: '13:00 - 14:30' }
+            ],
+            notas: [
+                { tipo: 'Prova Oral', nota: 8.5 },
+                { tipo: 'Prova Escrita', nota: 9.0 },
+                { tipo: 'Trabalhos', nota: 7.0 },
+                { tipo: 'Lições', nota: 10.0 }
+            ],
+            avisos: ['Não se esqueça de trazer materiais para a aula de amanhã!'],
+            progressoCurso: 75
         },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true // Começa o eixo Y em 0
+        {
+            username: 'aluno2',
+            cursosMatriculados: 4,
+            aulasAgendadas: 3,
+            notaMedia: 9.0,
+            turma: 'Grupo B',
+            aulasDoDia: [
+                { disciplina: 'Francês', horario: '08:00 - 09:30' },
+                { disciplina: 'Alemão', horario: '10:00 - 11:30' }
+            ],
+            notas: [
+                { tipo: 'Prova Oral', nota: 9.2 },
+                { tipo: 'Prova Escrita', nota: 8.8 },
+                { tipo: 'Trabalhos', nota: 9.0 }
+            ],
+            avisos: ['Lição de casa para amanhã: tema 3'],
+            progressoCurso: 85
+        }
+    ];
+
+    // Carregar os dados do aluno (simulação de login)
+    const alunoLogado = alunos[0]; // Aluno logado (simulação)
+    
+    function mostrarDadosAluno() {
+        // Exibe os dados do aluno na página
+        document.getElementById('cursos-matriculados').textContent = alunoLogado.cursosMatriculados;
+        document.getElementById('aulas-agendadas').textContent = alunoLogado.aulasAgendadas;
+        document.getElementById('nota-media').textContent = alunoLogado.notaMedia;
+        document.getElementById('turma').textContent = alunoLogado.turma;
+        
+        const aulasDoDiaEl = document.getElementById('aulas-do-dia');
+        aulasDoDiaEl.innerHTML = '';
+        alunoLogado.aulasDoDia.forEach(aula => {
+            const li = document.createElement('li');
+            li.textContent = `${aula.disciplina}: ${aula.horario}`;
+            aulasDoDiaEl.appendChild(li);
+        });
+
+        const notasEl = document.getElementById('notas');
+        notasEl.innerHTML = '';
+        alunoLogado.notas.forEach(nota => {
+            const li = document.createElement('li');
+            li.textContent = `${nota.tipo}: ${nota.nota}`;
+            notasEl.appendChild(li);
+        });
+
+        document.getElementById('avisos').textContent = alunoLogado.avisos[0];
+
+        // Exibir progresso do curso
+        document.getElementById('progresso-curso').textContent = `Você completou ${alunoLogado.progressoCurso}% do curso de Inglês.`;
+        document.getElementById('progresso-barra').style.width = `${alunoLogado.progressoCurso}%`;
+
+        // Carregar o gráfico de desempenho
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Prova Oral', 'Prova Escrita', 'Trabalhos', 'Lições'],
+                datasets: [{
+                    label: 'Desempenho Acadêmico',
+                    data: alunoLogado.notas.map(nota => nota.nota),
+                    backgroundColor: '#8A05BE',
+                    borderColor: '#5A01A1',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
                 }
             }
-        }
+        });
+    }
+
+    // Logout
+    document.getElementById('logout-button').addEventListener('click', () => {
+        localStorage.removeItem('aluno');  // Remover dados do aluno do localStorage
+        window.location.href = 'login.html';  // Redireciona para a página de login
     });
+
+    mostrarDadosAluno();
 </script>
 
 </body>
